@@ -14,7 +14,7 @@ const TaskList = function TaskList() {
   return (
     <ul>
       {tasksState.loading && <p>Loading...</p>}
-      {tasksState.error && <p>An error occured</p>}
+      {tasksState.error && <p className="error">An error occured</p>}
       {!tasksState.loading && tasksState.tasks.length
         ? tasksState.tasks.map((item, index) => (
             <li key={index}>
