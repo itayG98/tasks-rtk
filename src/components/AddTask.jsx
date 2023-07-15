@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { submitTask } from "../store/tasksSlice";
 
-const AddTask = () => {
+const AddTask = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [isTitleValid, setIsTitleValid] = useState(false);

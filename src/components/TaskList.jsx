@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import TaskItem from "./TaksItem";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks, deleteTask } from "../store/tasksSlice";
 
 const TaskList = function TaskList() {
@@ -21,9 +21,9 @@ const TaskList = function TaskList() {
         </div>
       )}
       {!tasksState.loading && tasksState.tasks.length
-        ? tasksState.tasks.map((item, index) => (
-            <div className="task">
-              <li key={index}>
+        ? tasksState.tasks.map((item) => (
+            <div className="task" key={item.id}>
+              <li>
                 <TaskItem task={item}></TaskItem>
               </li>
               <button

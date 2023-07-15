@@ -48,6 +48,21 @@ export const deleteTask = createAsyncThunk(
   }
 );
 
+export const updateTask = createAsyncThunk(
+  "tasks/updateTask",
+  (task, { dispatch }) => {
+    return axios
+      .put(url, task)
+      .then((response) => {
+        dispatch(fetchTasks());
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
+);
+
 const tasksSlice = createSlice({
   name: "tasks",
   initialState,
@@ -76,6 +91,12 @@ const tasksSlice = createSlice({
       state.error = "";
     });
     builder.addCase(deleteTask.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
+    builder.addCase(updateTask.fulfilled, (state) => {
+      state.error = "";
+    });
+    builder.addCase(updateTask.rejected, (state, action) => {
       state.error = action.error.message;
     });
   },
