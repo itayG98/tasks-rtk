@@ -19,10 +19,25 @@ export const fetchTasks = createAsyncThunk("tasks/fetchTasks", () => {
 });
 
 export const submitTask = createAsyncThunk(
-  "tasks/submitTasks",
+  "tasks/submitTask",
   (task, { dispatch }) => {
     return axios
       .post(url, task)
+      .then((response) => {
+        dispatch(fetchTasks());
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
+);
+
+export const deleteTask = createAsyncThunk(
+  "tasks/deleteTask",
+  (taskid, { dispatch }) => {
+    return axios
+      .delete(url + `/${taskid}`)
       .then((response) => {
         dispatch(fetchTasks());
         return response.data;
@@ -55,6 +70,12 @@ const tasksSlice = createSlice({
       state.error = "";
     });
     builder.addCase(submitTask.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
+    builder.addCase(deleteTask.fulfilled, (state) => {
+      state.error = "";
+    });
+    builder.addCase(deleteTask.rejected, (state, action) => {
       state.error = action.error.message;
     });
   },

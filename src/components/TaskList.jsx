@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaskItem from "./TaksItem";
-import { fetchTasks } from "../store/tasksSlice";
+import { fetchTasks, deleteTask } from "../store/tasksSlice";
 
 const TaskList = function TaskList() {
   const tasksState = useSelector((state) => state.tasks);
@@ -22,9 +22,18 @@ const TaskList = function TaskList() {
       )}
       {!tasksState.loading && tasksState.tasks.length
         ? tasksState.tasks.map((item, index) => (
-            <li key={index}>
-              <TaskItem task={item}></TaskItem>
-            </li>
+            <div>
+              <li key={index}>
+                <TaskItem task={item}></TaskItem>
+              </li>
+              <button
+                onClick={() => {
+                  dispatch(deleteTask(item.id));
+                }}
+              >
+                Delete task
+              </button>
+            </div>
           ))
         : null}
       <div>
