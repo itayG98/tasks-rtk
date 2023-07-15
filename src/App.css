@@ -4,29 +4,34 @@ form {
 }
 ul {
   list-style: none;
+  padding: 0;
 }
 
 form label {
   display: block;
   text-align: start;
-  margin-right: 0;
 }
 
 label input[type="text"] {
   display: block;
-  margin: 1rem 0 1rem 0;
 }
 label input[type="submit"] {
   display: block;
-  margin: auto;
-  margin: 1rem 0 1rem 0;
+  margin: 1.5rem auto 1.5rem auto;
 }
 
 input.invalid {
   background-color: #ffe4e1;
 }
 
+div > p {
+  margin: ;
+}
+
 .App {
-  margin: auto;
   text-align: center;
+}
+
+.error {
+  background-color: #ffe4e1;
 }
