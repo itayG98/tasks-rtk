@@ -52,7 +52,10 @@ const tasksSlice = createSlice({
       state.error = action.error.message;
     });
     builder.addCase(submitTask.fulfilled, (state) => {
-      state.error = ""; 
+      state.error = "";
+    });
+    builder.addCase(submitTask.rejected, (state, action) => {
+      state.error = action.error.message;
     });
   },
 });
