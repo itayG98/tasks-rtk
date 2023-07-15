@@ -25,7 +25,11 @@ input.invalid {
 }
 
 div > p {
-  margin: ;
+  margin: auto;
+}
+
+button {
+  margin-top: 1rem;
 }
 
 .App {
@@ -34,4 +38,14 @@ div > p {
 
 .error {
   background-color: #ffe4e1;
+}
+
+.task {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+  width: 33%;
+  margin: auto;
 }

@@ -22,7 +22,7 @@ const TaskList = function TaskList() {
       )}
       {!tasksState.loading && tasksState.tasks.length
         ? tasksState.tasks.map((item, index) => (
-            <div>
+            <div className="task">
               <li key={index}>
                 <TaskItem task={item}></TaskItem>
               </li>
