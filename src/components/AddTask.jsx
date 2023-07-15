@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { submitTask } from "../store/tasksSlice";
 
 const AddTask = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [isTitleValid, setIsTitleValid] = useState(false);
   const [isTitleTouched, setIsTitleTouched] = useState(false);
@@ -22,8 +25,9 @@ const AddTask = () => {
     setFormValidity(isTitleValid && isDescriptionValid);
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
+    dispatch(submitTask({ title: title, description: description }));
     setTitle("");
     setIsTitleTouched(false);
     setIsTitleValid(false);
