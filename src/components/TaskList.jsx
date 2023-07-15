@@ -14,7 +14,12 @@ const TaskList = function TaskList() {
   return (
     <ul>
       {tasksState.loading && <p>Loading...</p>}
-      {tasksState.error && <p className="error">An error occured</p>}
+      {tasksState.error && (
+        <div>
+          {" "}
+          <p className="error">An error occured</p>
+        </div>
+      )}
       {!tasksState.loading && tasksState.tasks.length
         ? tasksState.tasks.map((item, index) => (
             <li key={index}>
@@ -22,6 +27,15 @@ const TaskList = function TaskList() {
             </li>
           ))
         : null}
+      <div>
+        <button
+          onClick={() => {
+            dispatch(fetchTasks());
+          }}
+        >
+          Refetch data
+        </button>
+      </div>
     </ul>
   );
 };
