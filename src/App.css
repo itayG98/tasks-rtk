@@ -1,8 +1,22 @@
+form {
+  margin: auto;
+  max-width: 50%;
+}
+ul {
+  list-style: none;
+}
+
+form label {
+  display: block;
+  text-align: start;
+  margin-right: 0;
+}
+
+label input[type="text"] {
+  display: block;
+}
+
 .App {
   margin: auto;
   text-align: center;
-}
-
-ul {
-  list-style: none;
 }
